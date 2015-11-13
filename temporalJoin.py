@@ -3,7 +3,7 @@ import csv
 import arcpy.da
 print "Imports successful"
 
-workingShapefile = "F://572_Final_Project/BaseData/cities_base.shp"
+workingShapefile = "F://Analysis/Temporal_country_base.shp"
 csvfile = "F://Refugee_Analysis/temporalized_timeseries/NPR_new_cities.csv"
 
 ##read the csv file
@@ -66,6 +66,6 @@ with arcpy.da.UpdateCursor(workingShapefile, "*") as cursor:#
 				pass
 		else:
 			break
-		
-		
+    
+arcpy.Copy_management("F://Analysis/Data/TS_Countries/NPR_TS_Countries.shp")
 			
