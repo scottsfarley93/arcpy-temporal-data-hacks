@@ -3,8 +3,8 @@ import csv
 import arcpy.da
 print "Imports successful"
 
-workingShapefile = "C://Users/student/documents/country_base.shp"
-csvfile = "F://Analysis/TimeSeries/Guardian_New_Timeseries.csv"
+workingShapefile = "F://572_Final_Project/BaseData/cities_base.shp"
+csvfile = "F://Refugee_Analysis/temporalized_timeseries/NPR_new_cities.csv"
 
 ##read the csv file
 ##make a dictionary by country key
@@ -44,7 +44,7 @@ limiter = 0
 with arcpy.da.UpdateCursor(workingShapefile, "*") as cursor:#
 	for row in cursor:
 		if limiter < 10:
-			country = row[3]
+			country = row[-3]
 			if country not in cursors:
 				cursors[country] = 0
 			csvRecordNumber = cursors[country]

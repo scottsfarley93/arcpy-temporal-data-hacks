@@ -16,19 +16,20 @@ def clearDir(folder):
 
 			
 ##make 60 copies of a shapefile --> one for each day
-baseShapefile = "F://Analysis/Data/world_countries_3.shp"
-shapeDump = "C://Users/student/documents/shapefileDump"
+baseShapefile = "F://Analysis/Data/world_cities.shp"
+shapeDump = "C://Users/student/documents"
 
 ##make sure we start with an empty directory
 clearDir(shapeDump)
 print "Deleted all existing files in shapedump"
 
-outputShapefile = "C://Users/student/documents/country_base.shp"
+outputShapefile = "F://572_Final_Project/BaseData/cities_base.shp"
+copies = 60
 dataType = ""
 
 list_of_shapefiles = []
 i = 0
-while i < 60:
+while i < copies:
 	outname = shapeDump + "/" + str(i) + ".shp"
 	arcpy.Copy_management(baseShapefile, outname, dataType)
 	list_of_shapefiles.append(outname)
@@ -36,6 +37,8 @@ while i < 60:
 	i += 1
 
 ##append all the shapefiles to the output shapefile
+print "Now copying..."
+arcpy.Copy_management(baseShapefile, outputShapefile)
 print "Now appending..."
 arcpy.Append_management(list_of_shapefiles, outputShapefile, "TEST", "", "")
 print "Complete"

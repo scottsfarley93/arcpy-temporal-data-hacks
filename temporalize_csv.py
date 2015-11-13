@@ -1,6 +1,6 @@
 import csv
 import pandas
-f = open("F://Analysis/TimeSeries/NPR_Countries_TS.csv", 'r')
+f = open("F://Refugee_Analysis/timeseries/Tumblr_Cities_TS.csv", 'r')
 lines = []
 csvreader = csv.reader(f)
 cursor = 0
@@ -31,5 +31,5 @@ while i < len(header):
 	i +=1
 	
 data= pandas.DataFrame(data, columns=["Entity", "Date", "Value"])
-data.to_csv("F://Analysis/TimeSeries/NPR_New_Timeseries.csv")
-	
+data.to_csv("F://Refugee_Analysis/Temporalized_Timeseries/Tumblr_new_Cities.csv")
+print "Job Complete"
