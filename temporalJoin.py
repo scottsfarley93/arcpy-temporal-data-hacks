@@ -3,13 +3,13 @@ import csv
 import arcpy.da
 print "Imports successful"
 
-workingShapefile = "F://Analysis/Temporal_country_base.shp"
-csvfile = "F://Refugee_Analysis/temporalized_timeseries/NPR_new_cities.csv"
+workingShapefile = "F://572_Final_Project/BaseData/temporal_country_base.shp"
+csvfile = "F://CSVs/Guardian_countries.csv"
 
 ##read the csv file
 ##make a dictionary by country key
 ##values are lists
-csvreader = csv.reader(open(csvfile, 'r'))
+csvreader = csv.reader(open(csvfile, 'rU'))
 
 csvdata = {}
 
@@ -66,6 +66,12 @@ with arcpy.da.UpdateCursor(workingShapefile, "*") as cursor:#
 				pass
 		else:
 			break
-    
-arcpy.Copy_management("F://Analysis/Data/TS_Countries/NPR_TS_Countries.shp")
+print "Now copying..."
+arcpy.Copy_management(workingShapefile, "F://Analysis/Data/TS_Countries/Guardian_Countries.shp")
+print "Now deleting fields..."
+arcpy.DeleteField_management(workingShapefile, "Date")
+arcpy.DeleteField_management(workingShapefile, "Mentions")
+print "Job Complete."
+
+
 			
